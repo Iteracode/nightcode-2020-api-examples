@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/hapi": "^19.0.5"
+    "@hapi/hapi": "^19.0.5",
+    "@hapi/joi": "^17.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

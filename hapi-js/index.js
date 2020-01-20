@@ -1,12 +1,17 @@
 "use strict";
 
 const Hapi = require("@hapi/hapi");
+const Joi = require("@hapi/joi");
 
-function greetingsHandler(h, name = "world") {
-  return name.length > 0
-    ? { message: `hello, ${name}` }
-    : h.response({ error: "Name should not be empty" }).code(400);
+function greetings(name) {
+  return { message: `hello, ${name}` };
 }
+
+const nameContainerValidator = Joi.object({
+  name: Joi.string()
+    .optional()
+    .default("world")
+});
 
 const init = async () => {
   const server = Hapi.server({
@@ -17,23 +22,27 @@ const init = async () => {
   server.route({
     method: "GET",
     path: "/",
-    handler: (request, h) => {
-      return "Nightcode";
-    }
+    handler: () => "Nightcode"
   });
   server.route({
     method: "GET",
     path: "/api/greetings",
-    handler: (request, h) => {
-      return greetingsHandler(h, request.query.name);
+    handler: request => greetings(request.query.name),
+    options: {
+      validate: {
+        query: nameContainerValidator
+      }
     }
   });
 
   server.route({
     method: "POST",
     path: "/api/greetings",
-    handler: (request, h) => {
-      return greetingsHandler(h, request.payload.name);
+    handler: request => greetings(request.payload.name),
+    options: {
+      validate: {
+        payload: nameContainerValidator
+      }
     }
   });
 
