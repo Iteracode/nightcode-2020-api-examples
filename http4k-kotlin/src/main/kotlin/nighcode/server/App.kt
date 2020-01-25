@@ -3,7 +3,6 @@ package nighcode.server
 import org.http4k.core.*
 import org.http4k.core.Method.GET
 import org.http4k.core.Method.POST
-import org.http4k.core.Status.Companion.BAD_REQUEST
 import org.http4k.core.Status.Companion.OK
 import org.http4k.filter.ServerFilters
 import org.http4k.format.Jackson.auto
@@ -14,23 +13,29 @@ import org.http4k.routing.routes
 import org.http4k.server.Jetty
 import org.http4k.server.asServer
 
-data class Name(val name: String)
-data class Greetings(val message: String)
+data class NameContainer(val name: String) {
+    init {
+        require(name.isNotEmpty()) { "Name must not be empty" }
+    }
+}
+
+class Greetings(name: String) {
+    val message : String = "hello, $name"
+}
 
 fun main(args: Array<String>) {
     var queryNameLens = Query.nonEmptyString().defaulted("name", "world");
-    val nameLens = Body.auto<Name>().toLens()
+    val bodyNameLens = Body.auto<NameContainer>().map({ it.name }).toLens()
     val greetingsLens = Body.auto<Greetings>().toLens()
 
     val greetingsHandler= routes(
             GET to { request: Request ->
                 val name: String = queryNameLens.extract(request)
-                Response(OK).with(greetingsLens of Greetings("hello, ${name}"))
+                Response(OK).with(greetingsLens of Greetings(name))
             },
             POST to { request: Request ->
-                val name: String = nameLens.extract(request).name
-                if (name?.length === 0) Response(BAD_REQUEST)
-                else Response(OK).with(greetingsLens of Greetings("hello, ${name}"))
+                val name: String = bodyNameLens.extract(request)
+                Response(OK).with(greetingsLens of Greetings(name))
             }
     )
 
