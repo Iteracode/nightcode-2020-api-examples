@@ -17,12 +17,13 @@ Ainsi, on vérifie que les équipes savent répondre, gérer le code statut, man
 L'objectif n'est pas de fournir les solutions des problèmes de cette année, mais de creuser un point qui semble parfois problématique.
 
 On pourrait diviser un projet Nightcode en 4 domaines :
+
 - Front
 - Ops
 - API (création de routes, communication JSON)
 - Algorithmie
 
-La partie API est vraiment ce qui bloque le plus d'équipes. Trop d'implémentations "from scratch", trop de .htaccess à debugger,...  Nous avons donc eu l'idée de fournir des exemples dans différents langages et frameworks.
+La partie API est vraiment ce qui bloque le plus d'équipes. Trop d'implémentations "from scratch", trop de .htaccess à debugger,... Nous avons donc eu l'idée de fournir des exemples dans différents langages et frameworks.
 
 Pour démontrer les possibilités des technos choisies, nous nous contenterons de résoudre les trois premiers exercices proposés aux étudiants.
 
@@ -36,7 +37,6 @@ N.B. Le choix des technologies se fait uniquement au bon vouloir des développeu
 - Appelée en POST avec un body `{ "name" : "toto" }` retournera `{ "message" : "hello, toto" }`
 - Appelée en GET avec un paramètre name vide, elle retournera une 400.
 - Appelée en POST avec un body (ou un attribut `name`) vide, elle retournera une 400.
-
 
 ## Les implémentations
 
@@ -66,4 +66,28 @@ A noter que la duplication de code pour la validation est peut-être dûe à un 
 
 La bonne surprise.
 
-A la relecture, ce n'est pas l'implémentation la plus concise. Pourtant, la notion de Lenses, l'aspect "fonction" de tous les éléments a été très agréable à découvrir et à utiliser.
+A la relecture, ce n'est pas l'implémentation la plus concise. Pourtant, la notion de Lenses et l'aspect "fonction" de tous les éléments ont été très agréables à découvrir et à utiliser.
+
+## Vous voulez tester en local ?
+
+Nous vous proposons de tester vous-même ces quelques défis de la Nightcode.
+
+Vous allez pouvoir les lancer en local sur votre machine.
+
+### Exécution
+
+```cmd
+java -jar dist/nightcode-demo.jar http://localhost:8080
+```
+
+(Si vous ne précisez pas d'url, nous utiliserons http://localhost:3000.)
+
+### Affichage
+
+Les résultats apparaissent dans la console, avec les détails de vos erreurs.
+
+(Les tests sont relancés toutes les minutes.)
+
+### Arrêt
+
+`Ctrl+C` dans votre console
