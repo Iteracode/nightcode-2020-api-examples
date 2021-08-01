@@ -68,6 +68,12 @@ La bonne surprise.
 
 A la relecture, ce n'est pas l'implémentation la plus concise. Pourtant, la notion de Lenses et l'aspect "fonction" de tous les éléments ont été très agréables à découvrir et à utiliser.
 
+### Racket
+
+Je voulais qu'il y ait un Lisp dans les solutions et j'avais déjà une implémentation Clojure (celle qui me sert pour mes tests "End to End"). J'avais entenud du bien de Racket, donc j'ai essayé avec.
+
+[Pour plus de détails](./racket/README.md)
+
 ## Vous voulez tester en local ?
 
 Nous vous proposons de tester vous-même ces quelques défis de la Nightcode.
