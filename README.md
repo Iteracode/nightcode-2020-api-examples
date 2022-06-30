@@ -74,6 +74,12 @@ Je voulais qu'il y ait un Lisp dans les solutions et j'avais déjà une impléme
 
 [Pour plus de détails](./racket/README.md)
 
+### Quarkus
+
+Encore du Java...
+
+[Pour plus de détails](./nightcode-quarkus/README.md)
+
 ## Vous voulez tester en local ?
 
 Nous vous proposons de tester vous-même ces quelques défis de la Nightcode.
