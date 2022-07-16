@@ -29,3 +29,7 @@ Si on ne veut pas s'embêter, Quarkus propose de générer un Uberjar Java class
 ```
 ./mvnw clean package -Dquarkus.package.type=uber-jar 
 ```
+
+## Pour aller plus loin
+
+- Une [playlist](https://www.youtube.com/playlist?list=PLcR0l1ErUwydppYwIkUatOaWj3AEJy6D0) complète autour de Quarkus (en VF s'il vous plaît), par Sébastien Blanc. 
